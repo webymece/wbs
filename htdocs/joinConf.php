@@ -23,7 +23,7 @@ $c_max = $_SESSION['conference']['c_m_join'];
 require_once '/home/weby/share/lib/DB.php';
 
 $db = new DB('localhost','weby','mece','weby');
-$sql = 'select u_name from usr where c_id='.$c_id.' order by u_id';
+$sql = 'select u_name, u_launch from usr where c_id='.$c_id.' order by u_id';
 if( !$db->query($sql) || ( $u_data = $db->fetch() ) === FALSE ){
 	
 	// DBエラーなので終わり
@@ -62,6 +62,10 @@ function join_confirm($smarty){
 	if( empty( $_POST['u_type'] ) ) $u_type = 0;
 	else $u_type = 1; 
 	
+  // 発表者ランチ
+  if( empty($_POST['u_launch'])) $u_launch = 0;
+  else $u_launch = 1;
+
 	//発表者用データの取得
 	if(empty($_POST['u_title']) && $u_type == 1)  $flg = false;
 	else $u_title = $_POST['u_title'];
@@ -72,6 +76,7 @@ function join_confirm($smarty){
 	// テンプレートの変数設定
 	$smarty->assign('u_name', escape($u_name));
 	$smarty->assign('u_type', $u_type);
+  $smarty->assign('u_launch', $u_launch);
 	$smarty->assign('u_title', escape($u_title));
 	$smarty->assign('u_desc', escape($u_desc));
 	
@@ -82,8 +87,8 @@ function join_confirm($smarty){
 
 function join_done($c_id, $smarty){
 	//sql文の生成
-	$sql = "insert into usr(u_name, u_type, u_title, u_desc, c_id, u_pict)";
-	$sql .= "values('".escape($_POST['u_name'])."',".$_POST['u_type'].",'".escape($_POST['u_title'])."','".escape($_POST['u_desc'])."',".$c_id.",'none')";
+	$sql = "insert into usr(u_name, u_type, u_title, u_desc, c_id, u_pict, u_launch)";
+	$sql .= "values('".escape($_POST['u_name'])."',".$_POST['u_type'].",'".escape($_POST['u_title'])."','".escape($_POST['u_desc'])."',".$c_id.",'none',".$_POST['u_launch'].")";
 
 	//DBに格納
 	$db = new DB('localhost','weby','mece','weby');

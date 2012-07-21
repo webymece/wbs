@@ -23,7 +23,7 @@ function displayMap(address, place, lat, lng) {
     var myOptions = {
         scaleControl: false,
         center: new google.maps.LatLng(lat, lng),
-        zoom: 10,
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 

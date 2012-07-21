@@ -1,9 +1,12 @@
 {include file="header.tpl" title="weby 出欠管理"}
 
-<script type='text/javascript' src='js/expand.js'></script>
+<script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/aokayama/map.js'></script>
+<script type='text/javascript' src='js/expand.js'></script>
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
 <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&language=ja' charset='UTF-8'></script>
+
+<link rel="stylesheet" type="text/css" href="css/expand.css">
 
 <section id='styled' class='row'>
 
@@ -26,19 +29,20 @@
   <hr>
 
   <br>
+	<div id="presenterlist">
   <h2>発表</h2>
     <br>
     {foreach from=$p_data key=index item=presenter}
     {if $index lt $c_data.c_m_presen}
       <!--<div class="presenter_info">-->
+			<div class="presenter">
       <h3>{$presenter.u_title}</h3>
-      <p>
+      <p style="display:none;">
 	{$presenter.u_desc}<br>
       </p>
       <h4>{$presenter.u_name}</h4>
       <!--</div>-->
-      <br>
-      <br>
+			</div>
     {else}
     {if $index eq $c_data.c_m_presen}
       <h3>補欠</h3>
@@ -51,7 +55,7 @@
       <!--</div>-->
     {/if}
     {/foreach}
-  </table>
+	</div><!-- presenter -->
   
 </article>
 </div>
@@ -61,7 +65,7 @@
   <ul>
     {foreach from=$u_data key=index item=user}
     {if $index lt $c_data.c_m_join}
-    <li>{math equation='i+1' i=$index}: <a href="joinCancel.php?u_id={$user.u_id}">{$user.u_name}</a></li>
+    <li>{math equation='i+1' i=$index}: <a href="joinCancel.php?u_id={$user.u_id}">{$user.u_name}</a>{if $user.u_launch eq true} <image src='/image/launch.png' width='15px' id='launch_icon'>{/if}</li>
     {else}
     {if $index eq $c_data.c_m_join}
   </ul>
@@ -69,7 +73,7 @@
   <h4>補欠</h4>
   <ul>
     {/if}
-    <li>{math equation='i+1-max' i=$index max=$c_data.c_m_join}: <a href="joinCancel.php?u_id={$user.u_id}">{$user.u_name}</a></li>
+    <li>{math equation='i+1-max' i=$index max=$c_data.c_m_join}: <a href="joinCancel.php?u_id={$user.u_id}">{$user.u_name}{if $user.u_launch eq true} <image src='/image/launch.png' width='15    px' id='launch_icon'>{/if}</a></li>
     {/if}
     {/foreach}
   </ul>

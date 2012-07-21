@@ -9,6 +9,7 @@
                 	<h2>参加登録</h2>
                 	<h3>お名前</h3>
                 	<input type='text' name='u_name' id='u_name' placeholder='例: 植尾太郎' value='{$u_name}' />
+									<input type='checkbox' name='u_launch' id='u_launch' value='1'>ランチに参加する場合はチェックを付けて下さい
                 	<br /><br />
                 	<input type='checkbox' name='u_type' id='u_type' value='1' {if $u_type eq 1}checked{/if} />
                 	発表する場合はチェックをつけてください
@@ -31,7 +32,7 @@
                 <ul>
                     {foreach from=$u_data key=index item=user}
                         {if $index lt $c_max}
-                            <li>{math equation='i+1' i=$index}: {$user.u_name}</li>
+                            <li>{math equation='i+1' i=$index}: {$user.u_name}{if $user.u_launch eq true} <image src='/image/launch.png' width='15px' id='launch_icon'>{/if}</li>
                         {else}
                             {if $index eq $c_max}
                                 </ul>
@@ -39,7 +40,7 @@
                                 <h4>補欠</h4>
                                 <ul>
                             {/if}
-                            <li>{math equation='i+1-max' i=$index max=$c_max}: {$user.u_name}</li>
+                            <li>{math equation='i+1-max' i=$index max=$c_max}: {$user.u_name}{if $user.u_launch eq true} <image src='/image/launch.png' width='15px' id='launch_icon'>{/if}</li>
                         {/if}
                     {/foreach}
                 </ul>

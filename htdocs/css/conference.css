@@ -46,6 +46,7 @@ h2 {
 h3 {
     border-bottom:1px dashed #ccc;
     margin-top:15px;
+		cursor:pointer;
 }
 
 section ul li {
@@ -56,10 +57,10 @@ section ul li {
 }
 section h4 {
     float:right;
-    margin: 0px 30px 0px 0px;
+    margin: -30px 30px 0px 0px;
 }
 section p {
-    font-size: 1.2em; margin:20px;
+    font-size: 1.2em; margin:20px 20px 0px 20px;
 }
 section a {
     font-family:Georgia, "Times New Roman", Times, serif; 
@@ -120,4 +121,9 @@ footer {
     color:#666;
     font-size:0.9em;
     padding:4px 0px;
+}
+
+img#launch_icon {
+	margin-left: 5px;
+	margin-bottom: -3px;
 }
