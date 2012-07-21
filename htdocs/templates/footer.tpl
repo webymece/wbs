@@ -6,7 +6,7 @@
 {else}
 <div class="col_16 col"><hr></div>
 {/if}
-<div class="col_16 col">Copyright © 2011 weby conference All Right Reserved.</div>
+<div class="col_16 col">Copyright © 2011 - {$smarty.now|date_format:"%Y"} weby conference All Right Reserved.</div>
 </footer>
 
 </body>
