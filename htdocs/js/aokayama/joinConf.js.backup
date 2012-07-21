@@ -1,0 +1,12 @@
+$(function(){
+	
+	$("#u_type").click(function(){
+		console.log("type? "+$("#u_type").val());
+		if($(this).attr('checked') == true) {
+			$("#for_presenter").slideDown(1000);
+		} else {
+			$("#for_presenter").slideUp(1000);
+		}
+	});
+
+});

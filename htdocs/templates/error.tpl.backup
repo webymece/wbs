@@ -1,0 +1,21 @@
+<!--
+ - last update 2011/10/15
+ - author akihiro_ob
+ -->
+<!DOCTYPE html>
+<!-- 
+2011/10/15
+仮で作らせて頂いてます。共通エラーにしてだし分けします？　岡山
+
+-->
+<html lang='ja'>
+<head>
+    <title>error</title>
+    <meta charset='UTF-8'>
+</head>
+<body>
+<h1>error of db or something</h1>
+please contact us..
+
+</body>
+</html>

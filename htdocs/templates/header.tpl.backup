@@ -1,0 +1,31 @@
+{config_load file=weby.conf section="setup"}
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+    <!-- original -->
+    <title>{$title|default:'Weby Conference'}</title>
+    <!-- original -->
+    <meta charset='UTF-8' />
+        <!-- 52framework用っぽい -->
+        <script type='text/javascript' src='./js/modernizr-1.7.min.js'></script>
+        <link rel='stylesheet' href='./css/reset.css' media='screen' />
+        <link rel='stylesheet' href='./css/css3.css' media='screen' />
+        <link rel='stylesheet' href='./css/general.css' media='screen' />
+        <link rel='stylesheet' href='./css/grid.css' media='screen' />  
+        <link rel='stylesheet' href='./css/aokayama/index.css' media='screen'>
+    </head>
+	<body>
+		<div class='row'>
+			<header>
+				<div class='logo col_7 col'>{$title}</div>				
+				<nav class='col_9 col'>
+                    <div style='text-align:right; margin-right:10px;margin-top:10px;'>
+                        <a href='conference/regist.php'>新しい会議を開く</a> | 
+                        この会議に参加する | 
+                        <a href='conferenceHistory.php'>過去の会議を見る</a> |
+                        <a href='index.php'>TOP</a>
+                    </div>
+                </nav>
+				<div class='clear'></div>
+			</header>
+		</div>

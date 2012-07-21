@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<title>{$title}</title>
+<meta charset='UTF-8' />
+<!--52framework js css-->
+{include file="52framework.tpl" title='weby 出欠管理'}
+<!--/52framework js css-->
+
+<!--  google map api-->
+
+</head>
+<body>
+       
+<!--header-->
+{include file="header.tpl" title="weby 出欠管理"}
+<!--/header-->
+
+<section id='styled' class='row'>
+
+<div class='col col_12'>
+<article>
+  <h2><span>Next! </span>{$c_data[0].c_name}</h2>
+  {if $c_data[0].c_map_url ne 'none' }
+  <blockquote class='right'>{$c_data[0].c_map_url}</blockquote>
+  {/if}
+  <p>
+    {$c_data[0].c_desc}
+  </p>
+
+  <hr>
+
+  <h3>発表者</h3>
+  <table class="conference_table">
+    <tr>
+      <th>発表者</th>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+    {foreach from=$p_data key=index item=presenter}
+    {if $index lt $c_data[0].c_m_presen}
+    <tr>
+      <td>{$presenter.u_name}</td>
+      <td>{$presenter.u_title}</td>
+      <td>{$presenter.u_desc}</td>
+    </tr>
+    {else}
+    {if $index eq $c_data[0].c_m_presen}
+    <tr>
+      <th>補欠</th>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+    {/if}
+    <tr>
+      <td>{$presenter.u_name}</td>
+      <td>{$presenter.u_title}</td>
+      <td>{$presenter.u_desc}</td>
+    </tr>
+    {/if}
+    {/foreach}
+  </table>
+
+</article>
+</div>
+
+<div class='col col_4'>
+  <h2>参加者</h2>
+  <ul>
+    {foreach from=$u_data key=index item=user}
+    {if $index lt $c_data[0].c_m_join}
+    <li>{math equation='i+1' i=$index}: <a href="joinCancel.php?u_id={$user.u_id}&name={$user.u_name}&conf_id={$c_data[0].c_id}">{$user.u_name}</a></li>
+    {else}
+    {if $index eq $c_data[0].c_m_join}
+  </ul>
+  <br>
+  <h4>補欠</h4>
+  <ul>
+    {/if}
+    <li>{math equation='i+1-max' i=$index max=$c_data[0].c_m_join}: <a href="joinCancel.php?u_id={$user.u_id}&name={$user.u_name}&conf_id={$c_data[0].c_id}">{$user.u_name}</a></li>
+    {/if}
+    {/foreach}
+  </ul>
+</div>
+<div class='col_16 col'>
+  <a class='documentation' href='http://zsnet.jpn.ph/weby/'>weby conference wiki</a>
+</div>
+</section>
+
+<!--footer-->
+{include file='footer.tpl'}
+<!--/footer-->
+
+</body>
+</html>

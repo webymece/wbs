@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+<title>this is a http.js test</title>
+<script type="text/javascript" src="./http.js"></script>
+<script type="text/javascript">
+//httpオブジェクトの生成
+var ht = http.http();
+
+//デフォルトのcallbackを使用
+/*----
+params = {
+  'method':'get',
+  'path':'./test.txt',
+  'async':true
+}
+
+ht.context();
+ht.request(params);
+----*/
+
+
+//通信成功時のcallbackを指定
+/*----
+var callback = {
+  'success':function () {
+              alert('weby');
+            }
+}
+
+var params = {
+  'method':'get',
+  'path':'./test.txt',
+  'async':true
+}
+
+ht.context(callback);
+ht.request(params);
+----*/
+
+
+//postリクエスト
+
+var data = {
+  'c':'weby',
+  'name':'takahish',
+  'many':'a b c d e', //a+b+c+d+e空白を+に変換
+  'nihon':'日本語'
+}
+
+var params = {
+  'method':'post',
+  'data':data,
+  'path':'./test.txt',
+  'async':true
+};  
+
+ht.context();
+ht.request(params);
+
+</script>
+</head>
+<body>
+<h1>this is a http.js test</h1>
+
+</body>
+</html>
